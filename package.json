@@ -7,7 +7,13 @@
     "type": "git",
     "url": "https://github.com/manpenaloza/use-is-scrolled"
   },
-  "keywords": ["react", "hooks"],
+  "keywords": [
+    "react",
+    "hooks"
+  ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.8.1"
+  }
 }
