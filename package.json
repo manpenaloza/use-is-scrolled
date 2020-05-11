@@ -1,0 +1,9 @@
+{
+  "name": "use-is-scrolled",
+  "version": "0.0.1",
+  "description": "A react hook to detect whether a user has already scrolled on a page or entered a page at a lower section.",
+  "main": "index.js",
+  "keywords": ["react", "hooks"],
+  "author": "",
+  "license": "MIT"
+}
