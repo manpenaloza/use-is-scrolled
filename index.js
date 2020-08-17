@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 
 const getIsScrolled = () => {
-  const scrolledFromTop = document.body != undefined ? document.body.scrollTop : 0;
-  const scrolledDown = (window.pageYOffset || scrolledFromTop) > 0;
+  const scrolledFromTop =
+    typeof window !== "undefined" && document.body != undefined
+      ? document.body.scrollTop
+      : 0;
+  const scrolledDown =
+    typeof window !== "undefined" &&
+    (window.pageYOffset || scrolledFromTop) > 0;
   return scrolledDown;
 };
 
@@ -10,17 +15,21 @@ const getIsScrolled = () => {
 // @return boolen
 export default () => {
   const [isScrolled, setIsScrolled] = useState(getIsScrolled);
-  
+
   useEffect(() => {
     const onScroll = () => {
       const newIsScrolled = getIsScrolled();
       setIsScrolled(newIsScrolled);
+    };
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", onScroll);
     }
-    window.addEventListener("scroll", onScroll);
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("scroll", onScroll);
+      }
     };
   }, []);
-  
+
   return isScrolled;
 };
